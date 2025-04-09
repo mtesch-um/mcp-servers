@@ -19,6 +19,12 @@ COPY --from=builder /app/package-lock.json /app/package-lock.json
 
 ENV NODE_ENV=production
 
+# Install jq for node-jq package
+RUN apk add --no-cache jq
+
+# Set JQ_PATH environment variable to use system-installed jq
+ENV JQ_PATH=/usr/bin/jq
+
 RUN npm ci --ignore-scripts --omit-dev
 
 ENTRYPOINT ["node", "dist/index.js"]

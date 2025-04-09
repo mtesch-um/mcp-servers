@@ -1,6 +1,6 @@
 {
   "name": "@modelcontextprotocol/server-gitlab",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "MCP server for using the GitLab API",
   "license": "MIT",
   "author": "GitLab, PBC (https://gitlab.com)",
@@ -22,6 +22,7 @@
     "@modelcontextprotocol/sdk": "1.0.1",
     "@types/node-fetch": "^2.6.12",
     "node-fetch": "^3.3.2",
+    "node-jq": "^4.0.0",
     "zod-to-json-schema": "^3.23.5"
   },
   "devDependencies": {

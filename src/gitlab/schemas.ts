@@ -304,6 +304,12 @@ export const CreateBranchSchema = ProjectParamsSchema.extend({
     .describe("Source branch/commit for new branch")
 });
 
+export const QueryGraphQLSchema = z.object({
+  query: z.string().describe("GraphQL query to execute"),
+  variables: z.record(z.any()).optional().describe("Variables for the GraphQL query"),
+  jqFilters: z.array(z.string()).optional().describe("Array of JQ filter expressions to transform the query result. Each filter will receive the full GraphQL response and should produce summary data (max 1024 chars per filter output).")
+});
+
 // Export types
 export type GitLabAuthor = z.infer<typeof GitLabAuthorSchema>;
 export type GitLabFork = z.infer<typeof GitLabForkSchema>;
@@ -323,3 +329,4 @@ export type CreateMergeRequestOptions = z.infer<typeof CreateMergeRequestOptions
 export type CreateBranchOptions = z.infer<typeof CreateBranchOptionsSchema>;
 export type GitLabCreateUpdateFileResponse = z.infer<typeof GitLabCreateUpdateFileResponseSchema>;
 export type GitLabSearchResponse = z.infer<typeof GitLabSearchResponseSchema>;
+export type QueryGraphQL = z.infer<typeof QueryGraphQLSchema>;
